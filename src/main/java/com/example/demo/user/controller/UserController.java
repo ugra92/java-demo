@@ -3,9 +3,7 @@ package com.example.demo.user.controller;
 import com.example.demo.user.business.UserService;
 import com.example.demo.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +18,23 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @PostMapping()
+    public void addUser(@RequestBody User user) {
+        userService.addNewUser(user);
+    }
+
+    @DeleteMapping( "{userId}")
+    public void deleteUser(@PathVariable("userId") Long id) {
+        userService.deleteUser(id);
+    }
+
+    @PutMapping("")
+    public void editUser(@RequestBody User user) {
+        userService.editUser(user);
     }
 }
