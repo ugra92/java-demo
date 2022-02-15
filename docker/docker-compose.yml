@@ -1,10 +1,9 @@
-version: '1.0'
+version: '3.9'
 services:
   java_cont:
     build:
       context: ../
       dockerfile: docker/java/Dockerfile
-#    image: java_img
     ports:
       - "8080:8080"
     volumes:
@@ -13,7 +12,6 @@ services:
     build:
       context: ../docker
       dockerfile: mysql/Dockerfile
-#    image: mysql_img:1.0
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
